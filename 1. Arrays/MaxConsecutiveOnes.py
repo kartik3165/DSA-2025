@@ -1,12 +1,15 @@
-
-def findMaxConsecutiveOnes(nums):
-    best = 0
-    cur = 0
-    for x in nums:
-        if x == 1:
-            cur += 1
-            if cur > best:
-                best = cur
+def majorityElement(nums):
+    count = 0
+    elm = 0
+    for i in range(len(nums)):
+        if count == 0:
+            elm = i
+        if nums[elm] == nums[i]:
+            count += 1
         else:
-            cur = 0
-    return best
+            count -= 1
+    return nums[elm]
+
+nums = [1,1,1,3,3,3,1,3,3]
+
+print(majorityElement(nums))
