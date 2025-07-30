@@ -1,22 +1,25 @@
-def recur_permute(ds, nums, ans, freq):
-    if len(ds) == len(nums):
-        ans.append(ds[:])
-        return
+def backtrack(path, nums, result, used):
+    if len(path) == len(nums):
+        result.append(path[:])
+        return 
     
     for i in range(len(nums)):
-        if not freq[i]:
-            ds.append(nums[i])
-            freq[i] = 1
-            recur_permute(ds, nums, ans, freq)
-            freq[i] = 0
-            ds.pop()
+        if used[i] == 0:
+            path.append(nums[i])
+            used[i] = 1
+            backtrack(path, nums, result, used)
+            used[i] = 0
+            path.pop()
 
-def permute(nums):
-    ans = []
-    ds = []
-    freq = [0] * len(nums)
-    recur_permute(ds, nums, ans, freq)
-    return ans
+def print_per(nums):
+    result = []
+    used = [0] * len(nums)
+    backtrack(
+        [],
+        nums,
+        result,
+        used
+    ) 
 
-nums = [1, 2, 3]
-print(permute(nums), end='')
+    for i in result:
+        print(i)
