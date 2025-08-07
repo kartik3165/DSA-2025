@@ -27,5 +27,4 @@ matrix = [
 target = 5
 
 
-
 print(Solution().searchMatrix(matrix, target))
