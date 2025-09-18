@@ -30,7 +30,5 @@ class Solution(object):
                 left += 1
             else:
                 right += 1
-        print(left)
-        print(right)
 
 Solution().removeOuterParentheses(s='((())')
